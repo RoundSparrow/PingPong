@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.net.wifi.WpsInfo;
 import android.net.wifi.p2p.WifiP2pConfig;
+import android.net.wifi.p2p.WifiP2pDevice;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -180,9 +181,18 @@ public class DeviceDetailFragment extends Fragment
         TextView myStatusCardView = (TextView) mContentView.findViewById(R.id.my_status);
         TextView myMacAddressCardView = (TextView) mContentView.findViewById(R.id.my_mac_address);
 
-        myNameCardView.setText(LocalP2PDevice.getInstance().getLocalDevice().getP2pDevice().deviceName);
-        myStatusCardView.setText(DeviceStatus.getDeviceStatus(LocalP2PDevice.getInstance().getLocalDevice().getP2pDevice().status));
-        myMacAddressCardView.setText(LocalP2PDevice.getInstance().getLocalDevice().getP2pDevice().deviceAddress);
+        try {
+            WifiP2pDevice wifiP2pDevice = LocalP2PDevice.getInstance().getLocalDevice().getP2pDevice();
+            if (wifiP2pDevice != null) {
+                myNameCardView.setText(wifiP2pDevice.deviceName);
+                myStatusCardView.setText(DeviceStatus.getDeviceStatus(wifiP2pDevice.status));
+                myMacAddressCardView.setText(wifiP2pDevice.deviceAddress);
+            }
+        }
+        catch (Exception e0)
+        {
+            e0.printStackTrace();
+        }
     }
 
     @Override
