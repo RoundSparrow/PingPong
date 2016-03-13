@@ -29,7 +29,7 @@ import android.net.wifi.p2p.WifiP2pManager;
 import android.net.wifi.p2p.WifiP2pManager.ActionListener;
 import android.net.wifi.p2p.WifiP2pManager.Channel;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -64,7 +64,7 @@ import lombok.Getter;
  * <p></p>
  * Created by Stefano Cappa, based on google code samples
  */
-public class WiFiDirectActivity extends ActionBarActivity implements
+public class WiFiDirectActivity extends AppCompatActivity implements
         WifiP2pManager.ChannelListener,
         DeviceListFragment.DeviceActionListener,
         WifiP2pManager.PeerListListener,
